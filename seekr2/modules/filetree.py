@@ -9,6 +9,7 @@ import os
 import shutil
 from shutil import copyfile
 import numpy as np
+import parmed
 
 import seekr2.modules.common_base as base
 

@@ -278,6 +278,38 @@ def is_ion(atom):
     else:
         return False
 
+def check_pre_sim_md_anchor_dir_per_md_anchor(model):
+    """
+    Makes sure that there is an anchor directory in the anchor root
+    directory for every molecular dynamics anchor defined in the
+    Model object.
+    
+
+    Parameters
+    ----------
+    model : Model
+        The SEEKR2 model object containing all calculation information.
+
+    Returns
+    -------
+    : bool
+        False if the number of md anchor directories does not equal the
+        number of md anchors.
+
+    """
+    num_md_anchor_directories = len([
+        md_anchor_dir for md_anchor_dir 
+        in os.listdir(model.anchor_rootdir) 
+            if "anchor_" in md_anchor_dir
+    ])
+    num_md_anchors = len([
+        anchor for anchor in model.anchors 
+            if anchor.md == True
+    ])
+    if num_md_anchor_directories == num_md_anchors:
+        return True
+    return False
+
 def check_pre_sim_bubbles(model):
     """
     Checks starting pdb structures for water box bubbles.
@@ -293,6 +325,7 @@ def check_pre_sim_bubbles(model):
         False if a bubble is detected and True otherwise.
 
     """
+    
     for anchor in model.anchors:
         building_directory = os.path.join(
             model.anchor_rootdir, 
@@ -678,6 +711,9 @@ def check_pre_simulation_all(model):
     """
     
     check_passed_list = []
+    check_passed_list.append(
+        check_pre_sim_md_anchor_dir_per_md_anchor(model)
+    )
     check_passed_list.append(check_pre_sim_bubbles(model))
     check_passed_list.append(check_hmr_timestep(model))
     check_passed_list.append(check_pre_sim_MD_and_BD_salt_concentration(model))
