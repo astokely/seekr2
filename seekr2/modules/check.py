@@ -54,7 +54,7 @@ import mdtraj
 import seekr2.modules.common_base as base
 import seekr2.modules.elber_base as elber_base
 import seekr2.modules.mmvt_base as mmvt_base
-
+from seekr2.modules.common_base import Model 
 # The charges of common ions
 ION_CHARGE_DICT = {"li":1.0, "na":1.0, "k":1.0, "rb":1.0, "cs":1.0, "fr":1.0,
                    "be":2.0, "mg":2.0, "ca":2.0, "sr":2.0, "ba":2.0, "ra":2.0,
@@ -819,13 +819,13 @@ def check_mmvt_in_Voronoi_cell(model):
         # irrelevant test
         return True
     for anchor in model.anchors:
-        traj = load_structure_with_mdtraj(model, anchor, mode="mmvt_traj")
+        traj = load_structure_with_mdtraj(model, anchor, mode="pdb")
         if traj is None:
             continue
         for milestone in anchor.milestones:
             cv = model.collective_variables[milestone.cv_index]
             result = cv.check_mdtraj_within_boundary(traj, milestone.variables, 
-                                                     verbose=True)
+                                                verbose=True)
             if result == False:
                 warnstr = """CHECK FAILURE: The MMVT trajectory(ies)
     for anchor {} do not lie within the 

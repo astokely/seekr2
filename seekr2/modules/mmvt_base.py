@@ -8,6 +8,7 @@ MMVT calculations.
 import numpy as np
 from parmed import unit
 import mdtraj
+import seekr2.modules.hmr_check as hmr_check 
 
 from abserdes import Serializer
 
@@ -274,6 +275,7 @@ colvar {{
         traj1 = traj.atom_slice(self.group1)
         traj2 = traj.atom_slice(self.group2)
         com1_array = mdtraj.compute_center_of_mass(traj1)
+        print(com1_array)
         com2_array = mdtraj.compute_center_of_mass(traj2)
         for frame_index in range(traj.n_frames):
             com1 = com1_array[frame_index,:]
@@ -291,7 +293,7 @@ boundary at {:.4f} nm.""".format(radius, milestone_radius)
                 return False
             
         return True
-    
+
     def check_mdtraj_close_to_boundary(self, traj, milestone_variables, 
                                      verbose=False, max_avg=0.03, max_std=0.05):
         """
