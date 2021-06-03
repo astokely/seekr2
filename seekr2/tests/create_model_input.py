@@ -214,7 +214,6 @@ def create_host_guest_mmvt_model_input(root_dir):
     input_anchor14.bulk_anchor = True
     cv_input1.input_anchors.append(input_anchor14)
     
->>>>>>> 5de1a0d65a8938e836aff6fcb76d56bd96614695
     model_input.cv_inputs = [cv_input1]
     model_input.browndye_settings_input \
         = common_prepare.Browndye_settings_input()

@@ -82,7 +82,5 @@ setup(
 
 )
 
-'''
 if 'install' in sys.argv:
     install_abserdes()
-'''

@@ -15,9 +15,6 @@ import seekr2.modules.check as check
 # Don't remove the following library imports - needed by deserializer
 from seekr2.modules.common_prepare import Browndye_settings_input, \
     MMVT_input_settings, Elber_input_settings
-<<<<<<< HEAD
-from seekr2.modules.common_base import Ion, Amber_params, Forcefield_params, Box_vectors
-=======
 from seekr2.modules.common_base import Ion, Amber_params, Forcefield_params, \
     Box_vectors
 >>>>>>> 5de1a0d65a8938e836aff6fcb76d56bd96614695
