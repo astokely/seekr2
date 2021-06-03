@@ -141,6 +141,7 @@ def copy_building_files(model, input_model, rootdir):
             continue
         anchor_building_dir = os.path.join(rootdir, anchor.directory, 
                                         anchor.building_directory)
+        print(anchor_building_dir)
         assert os.path.exists(anchor_building_dir)
         
         try: # TODO: fix simple XML parser so this isn't necessary

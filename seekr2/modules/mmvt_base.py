@@ -275,7 +275,6 @@ colvar {{
         traj1 = traj.atom_slice(self.group1)
         traj2 = traj.atom_slice(self.group2)
         com1_array = mdtraj.compute_center_of_mass(traj1)
-        print(com1_array)
         com2_array = mdtraj.compute_center_of_mass(traj2)
         for frame_index in range(traj.n_frames):
             com1 = com1_array[frame_index,:]
