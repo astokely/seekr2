@@ -4,14 +4,14 @@ on:
   # GitHub has started calling new repo's first branch "main" https://github.com/github/renaming
   # Existing codes likely still have "master" as the primary branch
   # Both are tracked here to keep legacy and new codes working
-#  push:
-#    branches:
-#      - "master"
-#      - "main"
-#  pull_request:
-#    branches:
-#      - "master"
-#      - "main"
+  push:
+    branches:
+      - "master"
+      - "main"
+  pull_request:
+    branches:
+      - "master"
+      - "main"
 #  schedule:
 #    # Nightly tests run on master by default:
 #    #   Scheduled workflows run on the latest commit on the default or base branch.
@@ -25,7 +25,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest] # [macOS-latest, ubuntu-latest, windows-latest]
-        python-version: [3.7] #, 3.8, 3.9]
+        python-version: [3.8] #, 3.8, 3.9]
 
     steps:
     - uses: actions/checkout@v1
@@ -51,6 +51,60 @@ jobs:
         auto-activate-base: false
         show-channel-urls: true
 
+
+    #- name: Build OpenMM
+    #  shell: bash -l {0}
+    #  run: |
+    #    git clone https://github.com/openmm/openmm.git
+    #    mkdir -p /home/runner/work/build/bin
+    #    cd openmm
+    #    mkdir build
+    #    cd build
+    #    cmake -DCMAKE_INSTALL_PREFIX=/home/runner/work/build/bin/openmm ..
+    #    make 
+    #    make install
+    #    make PythonInstall
+    #    cd ../..	
+
+    - name: Get NAMD
+      shell: bash -l {0}
+      env:
+        # NAMD_ACCESS_TOKEN: ${{ secrets.NAMD_ACCESS_TOKEN }}
+        NAMD_ACCESS_TOKEN2: ${{ secrets.NAMD_ACCESS_TOKEN2 }}
+      run: |
+        
+        git clone https://github.com/UIUC-PPL/charm
+        cd charm
+        ./build charm++ multicore-linux-x86_64 --with-production
+        export CHRMDIR=${PWD}
+        cd ..
+        wget http://www.ks.uiuc.edu/Research/namd/libraries/tcl8.5.9-linux-x86_64.tar.gz
+        tar xzf tcl8.5.9-linux-x86_64.tar.gz
+        mkdir tcl
+        mv tcl8.5.9-linux-x86_64 tcl
+        export TCLINC=${PWD}/tcl/tcl8.5.9-linux-x86_64/lib/
+        export TCLLIB=${PWD}/tcl/tcl8.5.9-linux-x86_64/include/
+        export LD_LIBRARY_PATH=${PWD}/tcl/tcl8.5.9-linux-x86_64/include/:$LD_LIBRARY_PATH
+        export TCLDIR=${PWD}/tcl/tcl8.5.9-linux-x86_64
+        
+        #wget http://www.ks.uiuc.edu/Research/namd/libraries/fftw-linux-x86_64.tar.gz
+        #tar xzf fftw-linux-x86_64.tar.gz
+        #mkdir fftw
+        #mv linux-x86_64 fftw
+        #export FFTWDIR=${PWD}/fftw/linux-x86_64
+        
+        git clone https://oauth2:${NAMD_ACCESS_TOKEN2}@gitlab.com/tcbgUIUC/namd.git
+        cd namd
+        ./config Linux-x86_64-g++ --charm-base $CHRMDIR --tcl-prefix $TCLDIR --without-fftw #--fftw-prefix ${FFTWDIR}
+        cd Linux-x86_64-g++
+        make
+        pwd
+        ls
+        export PATH="$PWD:$PATH"
+        echo "PATH: $PATH"
+        cd ../..
+        
+        
     - name: Install package
 
       # conda setup requires this special shell
@@ -58,7 +112,34 @@ jobs:
       run: |
         python -m pip install . --no-deps
         conda list
-        conda install numpy scipy git swig matplotlib
+
+        # Install seekr openmm plugin
+        git clone https://github.com/seekrcentral/seekr2_openmm_plugin.git
+        cd seekr2_openmm_plugin/seekr2plugin
+        mkdir build
+        cd build
+        export OPENMM_INSTALL_DIR=${CONDA_PREFIX}
+        export OPENMM_LIB_PATH=$OPENMM_INSTALL_DIR/lib
+        export OPENMM_PLUGIN_DIR=$OPENMM_LIB_PATH/plugins
+        export LD_LIBRARY_PATH=$OPENMM_LIB_PATH:$OPENMM_PLUGIN_DIR:$LD_LIBRARY_PATH
+        cmake -DCMAKE_INSTALL_PREFIX=${CONDA_PREFIX} -DSEEKR2_BUILD_OPENCL_LIB=OFF -DOPENMM_DIR=${CONDA_PREFIX} ..
+        make
+        make install
+        make PythonInstall
+        make test
+
+
+    - name: Install BrownDye
+      shell: bash -l {0}
+      run: |
+        sudo apt-get install libexpat1 apbs
+        wget https://browndye.ucsd.edu/downloads/browndye2-ubuntu-20.04-2021-02-07.tar.gz
+        tar -xzf browndye2-ubuntu-20.04-2021-02-07.tar.gz
+        cd browndye2/bin
+        export PATH="$PWD:$PATH"
+        echo "PATH: $PATH"
+        ls
+        cd ../..
 
 
     - name: Run tests
@@ -67,8 +148,11 @@ jobs:
       shell: bash -l {0}
 
       run: |
+        export PATH="/home/runner/work/seekr2/seekr2/browndye2/bin:$PATH"
+        export PATH="/home/runner/work/seekr2/seekr2/namd/Linux-x86_64-g++/:$PATH"
+        python -m simtk.testInstallation
         # pytest -v --cov=seekr2 --cov-report=xml --color=yes seekr2/tests/
-        python setup.py test --addopts "--ignore=seekr2/tests/test_sim_namd.py --ignore=openmmvt/seekr2/test_runner_namd.py --ignore=openmmvt/seekr2/test_runner_browndye2.py" --ignore=seekr2/tests/test_runner_openmm.py"
+        python setup.py test
 
     - name: CodeCov
       uses: codecov/codecov-action@v1

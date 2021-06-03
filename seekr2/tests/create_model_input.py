@@ -37,8 +37,8 @@ def create_host_guest_mmvt_model_input(root_dir):
     input_anchor1.starting_amber_params = base.Amber_params()
     input_anchor1.starting_amber_params.prmtop_filename \
         = "../data/hostguest_files/hostguest.parm7"
-    input_anchor1.starting_amber_params.inpcrd_filename = \
-        "../data/hostguest_files/hostguest.rst7"
+    #input_anchor1.starting_amber_params.inpcrd_filename = \
+    #    "../data/hostguest_files/hostguest.rst7"
     input_anchor1.starting_amber_params.pdb_coordinates_filename = \
         "../data/hostguest_files/hostguest_at0.4.pdb"
     input_anchor1.bound_state = True
@@ -50,8 +50,8 @@ def create_host_guest_mmvt_model_input(root_dir):
     input_anchor2.starting_amber_params = base.Amber_params()
     input_anchor2.starting_amber_params.prmtop_filename = \
         "../data/hostguest_files/hostguest.parm7"
-    input_anchor2.starting_amber_params.inpcrd_filename = \
-        "../data/hostguest_files/hostguest.rst7"
+    #input_anchor2.starting_amber_params.inpcrd_filename = \
+    #    "../data/hostguest_files/hostguest.rst7"
     input_anchor2.starting_amber_params.pdb_coordinates_filename = \
         "../data/hostguest_files/hostguest_at1.9.pdb"
     input_anchor2.bound_state = False
@@ -63,8 +63,8 @@ def create_host_guest_mmvt_model_input(root_dir):
     input_anchor3.starting_amber_params = base.Amber_params()
     input_anchor3.starting_amber_params.prmtop_filename = \
         "../data/hostguest_files/hostguest.parm7"
-    input_anchor3.starting_amber_params.inpcrd_filename = \
-        "../data/hostguest_files/hostguest.rst7"
+    #input_anchor3.starting_amber_params.inpcrd_filename = \
+    #    "../data/hostguest_files/hostguest.rst7"
     input_anchor3.starting_amber_params.pdb_coordinates_filename = \
         "../data/hostguest_files/hostguest_at3.8.pdb"
     input_anchor3.bound_state = False
@@ -76,8 +76,8 @@ def create_host_guest_mmvt_model_input(root_dir):
     input_anchor4.starting_amber_params = base.Amber_params()
     input_anchor4.starting_amber_params.prmtop_filename = \
         "../data/hostguest_files/hostguest.parm7"
-    input_anchor4.starting_amber_params.inpcrd_filename = \
-        "../data/hostguest_files/hostguest.rst7"
+    #input_anchor4.starting_amber_params.inpcrd_filename = \
+    #    "../data/hostguest_files/hostguest.rst7"
     input_anchor4.starting_amber_params.pdb_coordinates_filename \
         = "../data/hostguest_files/hostguest_at5.4.pdb"
     input_anchor4.bound_state = False
@@ -89,8 +89,8 @@ def create_host_guest_mmvt_model_input(root_dir):
     input_anchor5.starting_amber_params = base.Amber_params()
     input_anchor5.starting_amber_params.prmtop_filename \
         = "../data/hostguest_files/hostguest.parm7"
-    input_anchor5.starting_amber_params.inpcrd_filename \
-        = "../data/hostguest_files/hostguest.rst7"
+    #input_anchor5.starting_amber_params.inpcrd_filename \
+    #    = "../data/hostguest_files/hostguest.rst7"
     input_anchor5.starting_amber_params.pdb_coordinates_filename \
         = "../data/hostguest_files/hostguest_at7.0.pdb"
     input_anchor5.bound_state = False
@@ -102,8 +102,8 @@ def create_host_guest_mmvt_model_input(root_dir):
     input_anchor6.starting_amber_params = base.Amber_params()
     input_anchor6.starting_amber_params.prmtop_filename \
         = "../data/hostguest_files/hostguest.parm7"
-    input_anchor6.starting_amber_params.inpcrd_filename \
-        = "../data/hostguest_files/hostguest.rst7"
+    #input_anchor6.starting_amber_params.inpcrd_filename \
+    #    = "../data/hostguest_files/hostguest.rst7"
     input_anchor6.starting_amber_params.pdb_coordinates_filename \
         = "../data/hostguest_files/hostguest_at8.3.pdb"
     input_anchor6.bound_state = False
@@ -115,8 +115,8 @@ def create_host_guest_mmvt_model_input(root_dir):
     input_anchor7.starting_amber_params = base.Amber_params()
     input_anchor7.starting_amber_params.prmtop_filename \
         = "../data/hostguest_files/hostguest.parm7"
-    input_anchor7.starting_amber_params.inpcrd_filename \
-        = "../data/hostguest_files/hostguest.rst7"
+    #input_anchor7.starting_amber_params.inpcrd_filename \
+    #    = "../data/hostguest_files/hostguest.rst7"
     input_anchor7.starting_amber_params.pdb_coordinates_filename \
         = "../data/hostguest_files/hostguest_at9.8.pdb"
     input_anchor7.bound_state = False
@@ -128,8 +128,8 @@ def create_host_guest_mmvt_model_input(root_dir):
     input_anchor8.starting_amber_params = base.Amber_params()
     input_anchor8.starting_amber_params.prmtop_filename \
         = "../data/hostguest_files/hostguest.parm7"
-    input_anchor8.starting_amber_params.inpcrd_filename \
-        = "../data/hostguest_files/hostguest.rst7"
+    #input_anchor8.starting_amber_params.inpcrd_filename \
+    #    = "../data/hostguest_files/hostguest.rst7"
     input_anchor8.starting_amber_params.pdb_coordinates_filename \
         = "../data/hostguest_files/hostguest_at11.2.pdb"
     input_anchor8.bound_state = False
@@ -141,8 +141,8 @@ def create_host_guest_mmvt_model_input(root_dir):
     input_anchor9.starting_amber_params = base.Amber_params()
     input_anchor9.starting_amber_params.prmtop_filename \
         = "../data/hostguest_files/hostguest.parm7"
-    input_anchor9.starting_amber_params.inpcrd_filename \
-        = "../data/hostguest_files/hostguest.rst7"
+    #input_anchor9.starting_amber_params.inpcrd_filename \
+    #    = "../data/hostguest_files/hostguest.rst7"
     input_anchor9.starting_amber_params.pdb_coordinates_filename \
         = "../data/hostguest_files/hostguest_at12.8.pdb"
     input_anchor9.bound_state = False
@@ -152,13 +152,69 @@ def create_host_guest_mmvt_model_input(root_dir):
     input_anchor10 = common_cv.Spherical_cv_anchor()
     input_anchor10.radius = 1.4
     input_anchor10.starting_amber_params = base.Amber_params()
-    input_anchor10.starting_amber_params.prmtop_filename = ""
-    input_anchor10.starting_amber_params.inpcrd_filename = ""
-    input_anchor10.starting_amber_params.pdb_coordinates_filename = ""
+    input_anchor10.starting_amber_params.prmtop_filename \
+        = "../data/hostguest_files/hostguest.parm7"
+    #input_anchor10.starting_amber_params.inpcrd_filename \
+    #    = "../data/hostguest_files/hostguest.rst7"
+    input_anchor10.starting_amber_params.pdb_coordinates_filename \
+        = "../data/hostguest_files/hostguest_at9.5.pdb"
     input_anchor10.bound_state = False
     input_anchor10.bulk_anchor = True
     cv_input1.input_anchors.append(input_anchor10)
     
+    input_anchor11 = common_cv.Spherical_cv_anchor()
+    input_anchor11.radius = 1.05
+    input_anchor11.starting_amber_params = base.Amber_params()
+    input_anchor11.starting_amber_params.prmtop_filename \
+        = "../data/hostguest_files/hostguest.parm7"
+    #input_anchor11.starting_amber_params.inpcrd_filename \
+    #    = "../data/hostguest_files/hostguest.rst7"
+    input_anchor11.starting_amber_params.pdb_coordinates_filename \
+        = "../data/hostguest_files/hostguest_at10.5.pdb"
+    input_anchor11.bound_state = False
+    input_anchor11.bulk_anchor = False
+    cv_input1.input_anchors.append(input_anchor11)
+    
+    input_anchor12 = common_cv.Spherical_cv_anchor()
+    input_anchor12.radius = 1.15
+    input_anchor12.starting_amber_params = base.Amber_params()
+    input_anchor12.starting_amber_params.prmtop_filename \
+        = "../data/hostguest_files/hostguest.parm7"
+    #input_anchor12.starting_amber_params.inpcrd_filename \
+    #    = "../data/hostguest_files/hostguest.rst7"
+    input_anchor12.starting_amber_params.pdb_coordinates_filename \
+        = "../data/hostguest_files/hostguest_at11.5.pdb"
+    input_anchor12.bound_state = False
+    input_anchor12.bulk_anchor = False
+    cv_input1.input_anchors.append(input_anchor12)
+    
+    input_anchor13 = common_cv.Spherical_cv_anchor()
+    input_anchor13.radius = 1.25
+    input_anchor13.starting_amber_params = base.Amber_params()
+    input_anchor13.starting_amber_params.prmtop_filename \
+        = "../data/hostguest_files/hostguest.parm7"
+    #input_anchor13.starting_amber_params.inpcrd_filename \
+    #    = "../data/hostguest_files/hostguest.rst7"
+    input_anchor13.starting_amber_params.pdb_coordinates_filename \
+        = "../data/hostguest_files/hostguest_at12.5.pdb"
+    input_anchor13.bound_state = False
+    input_anchor13.bulk_anchor = False
+    cv_input1.input_anchors.append(input_anchor13)
+    
+    input_anchor14 = common_cv.Spherical_cv_anchor()
+    input_anchor14.radius = 1.35
+    input_anchor14.starting_amber_params = base.Amber_params()
+    input_anchor14.starting_amber_params.prmtop_filename \
+        = ""
+    #input_anchor14.starting_amber_params.inpcrd_filename \
+    #    = ""
+    input_anchor14.starting_amber_params.pdb_coordinates_filename \
+        = ""
+    input_anchor14.bound_state = False
+    input_anchor14.bulk_anchor = True
+    cv_input1.input_anchors.append(input_anchor14)
+    
+>>>>>>> 5de1a0d65a8938e836aff6fcb76d56bd96614695
     model_input.cv_inputs = [cv_input1]
     model_input.browndye_settings_input \
         = common_prepare.Browndye_settings_input()
