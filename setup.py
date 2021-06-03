@@ -83,4 +83,7 @@ setup(
 )
 
 if 'install' in sys.argv:
-    install_abserdes()
+    try:
+        import abserdes
+    except:
+        install_abserdes()

@@ -17,7 +17,6 @@ from seekr2.modules.common_prepare import Browndye_settings_input, \
     MMVT_input_settings, Elber_input_settings
 from seekr2.modules.common_base import Ion, Amber_params, Forcefield_params, \
     Box_vectors
->>>>>>> 5de1a0d65a8938e836aff6fcb76d56bd96614695
 from seekr2.modules.common_cv import Spherical_cv_anchor, Spherical_cv_input
 
 def generate_seekr2_model_and_filetree(model_input, force_overwrite):
